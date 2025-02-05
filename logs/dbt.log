@@ -1,0 +1,102 @@
+[0m19:13:58.613612 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb437125130>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb437b1e7e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb4381e1ee0>]}
+
+
+============================== 19:13:58.620679 | 8df1133e-fdda-4211-ad45-6c0fc9b84565 ==============================
+[0m19:13:58.620679 [info ] [MainThread]: Running with dbt=1.9.2
+[0m19:13:58.621318 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'logs', 'version_check': 'True', 'profiles_dir': '/home/epdrumond/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt init wheather', 'introspect': 'True', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m19:13:58.649549 [debug] [MainThread]: Starter project path: /home/epdrumond/wheather-data-project/wenv/lib/python3.12/site-packages/dbt/include/starter_project
+[0m19:13:58.661023 [info ] [MainThread]: 
+Your new dbt project "wheather" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m19:13:58.661497 [info ] [MainThread]: Setting up your profile.
+[0m19:39:37.890960 [error] [MainThread]: Encountered an error:
+
+[0m19:39:37.908755 [error] [MainThread]: Traceback (most recent call last):
+  File "/home/epdrumond/wheather-data-project/wenv/lib/python3.12/site-packages/dbt/cli/requires.py", line 153, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/epdrumond/wheather-data-project/wenv/lib/python3.12/site-packages/dbt/cli/requires.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/epdrumond/wheather-data-project/wenv/lib/python3.12/site-packages/dbt/cli/main.py", line 477, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "/home/epdrumond/wheather-data-project/wenv/lib/python3.12/site-packages/dbt/task/init.py", line 346, in run
+    self.setup_profile(profile_name)
+  File "/home/epdrumond/wheather-data-project/wenv/lib/python3.12/site-packages/dbt/task/init.py", line 262, in setup_profile
+    self.create_profile_from_target(adapter, profile_name=profile_name)
+  File "/home/epdrumond/wheather-data-project/wenv/lib/python3.12/site-packages/dbt/task/init.py", line 179, in create_profile_from_target
+    self.create_profile_from_profile_template(profile_template, profile_name)
+  File "/home/epdrumond/wheather-data-project/wenv/lib/python3.12/site-packages/dbt/task/init.py", line 163, in create_profile_from_profile_template
+    target = self.generate_target_from_input(prompts, initial_target)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/epdrumond/wheather-data-project/wenv/lib/python3.12/site-packages/dbt/task/init.py", line 129, in generate_target_from_input
+    target[key] = click.prompt(
+                  ^^^^^^^^^^^^^
+  File "/home/epdrumond/wheather-data-project/wenv/lib/python3.12/site-packages/click/termui.py", line 164, in prompt
+    value = prompt_func(prompt)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/home/epdrumond/wheather-data-project/wenv/lib/python3.12/site-packages/click/termui.py", line 147, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m19:39:37.915255 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": false, "command_wall_clock_time": 1539.3839, "process_in_blocks": "161080", "process_kernel_time": 0.318753, "process_mem_max_rss": "151588", "process_out_blocks": "72", "process_user_time": 3.307064}
+[0m19:39:37.918239 [debug] [MainThread]: Command `dbt init` failed at 19:39:37.917686 after 1539.39 seconds
+[0m19:39:37.920938 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb439a372f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb41d5e1d90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb41d5e1c40>]}
+[0m19:39:37.922610 [debug] [MainThread]: Flushing usage events
+[0m19:39:38.509913 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m19:40:25.793702 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4fafc62bd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4faf219760>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4fae4def90>]}
+
+
+============================== 19:40:25.800193 | be12874f-ddd0-42e7-b93a-8b02be3628a3 ==============================
+[0m19:40:25.800193 [info ] [MainThread]: Running with dbt=1.9.2
+[0m19:40:25.801606 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'profiles_dir': '/home/epdrumond/.dbt', 'log_path': 'logs', 'fail_fast': 'False', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt init wheather', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m19:40:25.830537 [info ] [MainThread]: A project called wheather already exists here.
+[0m19:40:25.832347 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 0.14081518, "process_in_blocks": "39744", "process_kernel_time": 0.294404, "process_mem_max_rss": "87752", "process_out_blocks": "8", "process_user_time": 2.53797}
+[0m19:40:25.833322 [debug] [MainThread]: Command `dbt init` succeeded at 19:40:25.833082 after 0.14 seconds
+[0m19:40:25.834517 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4fae55e3c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4fae626de0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4fafc62bd0>]}
+[0m19:40:25.835436 [debug] [MainThread]: Flushing usage events
+[0m19:40:26.562833 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m19:40:45.049083 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f96d749e660>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f96d5c33e30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f96d5c33fe0>]}
+
+
+============================== 19:40:45.052768 | c9ba7201-6dba-4250-ab58-2acaf303eaa9 ==============================
+[0m19:40:45.052768 [info ] [MainThread]: Running with dbt=1.9.2
+[0m19:40:45.053438 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'debug': 'False', 'log_path': 'logs', 'profiles_dir': '/home/epdrumond/.dbt', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt init wheather', 'introspect': 'True', 'log_format': 'default', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m19:40:45.090556 [debug] [MainThread]: Starter project path: /home/epdrumond/wheather-data-project/wenv/lib/python3.12/site-packages/dbt/include/starter_project
+[0m19:40:45.385574 [info ] [MainThread]: 
+Your new dbt project "wheather" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m19:40:45.386529 [info ] [MainThread]: Setting up your profile.
+[0m19:45:32.965017 [info ] [MainThread]: Profile wheather written to /home/epdrumond/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m19:45:32.974336 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 288.00333, "process_in_blocks": "35048", "process_kernel_time": 0.212655, "process_mem_max_rss": "150032", "process_out_blocks": "80", "process_user_time": 3.615144}
+[0m19:45:32.974865 [debug] [MainThread]: Command `dbt init` succeeded at 19:45:32.974756 after 288.00 seconds
+[0m19:45:32.975495 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f96d67585f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f96be7ce0f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f96bc0f1640>]}
+[0m19:45:32.976124 [debug] [MainThread]: Flushing usage events
+[0m19:45:33.534855 [debug] [MainThread]: An error was encountered while trying to flush usage events
