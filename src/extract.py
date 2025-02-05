@@ -5,6 +5,8 @@ import requests
 import pandas as pd
 from dotenv import load_dotenv
 
+from utils import * 
+
 
 
 def fetch_weather_data(city: str, start_date: str, end_date: str) -> pd.DataFrame:
@@ -34,11 +36,14 @@ def fetch_weather_data(city: str, start_date: str, end_date: str) -> pd.DataFram
     return response.json()
 
 def main():
-    print(fetch_weather_data(
+    wheather_data = fetch_weather_data(
         city="Fortaleza",
         start_date="2025-01-01",
         end_date="2025-01-10"
-    ))
+    )
+
+    df, stations_df = format_json_into_dataframe(wheather_data)
+    return df, stations_df
 
 if __name__ == "__main__":
     main()
