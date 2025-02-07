@@ -33,15 +33,16 @@ def load_into_gcp_bucket(
         source_file_path: str,
         destination_blob_name: str,
         credentials_file: str
-) -> int:
+) -> None:
     """
     Load locally stored data file into GCP bucket
 
     Parameters:
-        bucket_name:
-        file_path:
-        destination_blob_name:
-        credentials_file:
+        bucket_name: Name of the bucket in which the file should be storaged
+        source_file_path: Path of the source file to be stored
+        destination_blob_name: File name at the destination bucket
+        credentials_file: File containing the credentials for service account 
+            responsible for the transfer
 
     Returns:
         int
@@ -55,4 +56,3 @@ def load_into_gcp_bucket(
     blob = bucket.blob(destination_blob_name)
     blob.upload_from_filename(source_file_path)
 
-    return 0
