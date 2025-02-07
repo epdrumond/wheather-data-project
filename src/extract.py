@@ -39,9 +39,8 @@ def fetch_weather_data(city: str, start_date: str, end_date: str) -> pd.DataFram
 
     return response.json()
 
-def main():
+def main(extraction_date: str) -> None:
 
-    extraction_date = "2025-02-01"
     extraction_date_str = extraction_date.replace("-", "")
 
     #Load list of cities for wheather data extraction and prepare
@@ -50,14 +49,12 @@ def main():
 
     wheather_df = []
     stations_df = []
-    for index, row in cities.iterrows():
+    for _, row in cities.iterrows():
         city_name = row["city_name"]
         enconded_city_name = row["enconded_city_name"]
         
         wheather_data = fetch_weather_data(
             city=enconded_city_name,
-            # start_date=extraction_date,
-            # end_date=extraction_date
             start_date=extraction_date,
             end_date=extraction_date
         )
@@ -86,4 +83,5 @@ def main():
     )
 
 if __name__ == "__main__":
-    main()
+    extraction_date = sys.argv[1]
+    main(extraction_date)
