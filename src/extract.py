@@ -6,6 +6,10 @@ from dotenv import load_dotenv
 
 from utils import * 
 
+load_dotenv()
+VISUALCROSSING_API_KEY = os.getenv("VISUALCROSSING_API_KEY")
+CREDENTIALS_FILE = os.getenv("CREDENTIALS_FILE")
+
 def fetch_weather_data(city: str, start_date: str, end_date: str) -> pd.DataFrame:
     """
     Fetchs daily wheater data from the Visual Crossing API, given a specified city, start and end dates.
@@ -21,7 +25,6 @@ def fetch_weather_data(city: str, start_date: str, end_date: str) -> pd.DataFram
 
     load_dotenv()
     VISUALCROSSING_API_KEY = os.getenv("VISUALCROSSING_API_KEY")
-    return VISUALCROSSING_API_KEY
     
     url = f"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{city}/{start_date}/{end_date}?unitGroup=metric&include=days&key={VISUALCROSSING_API_KEY}&contentType=json"
     #return url
@@ -40,17 +43,15 @@ def main():
         end_date="2025-01-10"
     )
 
-    print(wheather_data)
+    df, stations_df = format_json_into_dataframe(wheather_data)
+    df.to_csv("test_file.csv")
 
-    # df, stations_df = format_json_into_dataframe(wheather_data)
-    # df.to_csv("test_file.csv")
-
-    # load_into_gcp_bucket(
-    #     bucket_name="wheather-data",
-    #     source_file_path="test_file.csv",
-    #     destination_blob_name="test_file.csv",
-    #     credentials_file="~/wheather-data-314e6bffbb95.json"
-    # )
+    load_into_gcp_bucket(
+        bucket_name="wheather-data",
+        source_file_path="test_file.csv",
+        destination_blob_name="raw/test_file2.csv",
+        credentials_file=CREDENTIALS_FILE
+    )
 
 if __name__ == "__main__":
     main()
