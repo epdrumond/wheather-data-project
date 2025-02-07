@@ -1,13 +1,10 @@
 import os
 import sys
-import json
 import requests
 import pandas as pd
 from dotenv import load_dotenv
 
 from utils import * 
-
-
 
 def fetch_weather_data(city: str, start_date: str, end_date: str) -> pd.DataFrame:
     """
@@ -24,6 +21,7 @@ def fetch_weather_data(city: str, start_date: str, end_date: str) -> pd.DataFram
 
     load_dotenv()
     VISUALCROSSING_API_KEY = os.getenv("VISUALCROSSING_API_KEY")
+    return VISUALCROSSING_API_KEY
     
     url = f"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{city}/{start_date}/{end_date}?unitGroup=metric&include=days&key={VISUALCROSSING_API_KEY}&contentType=json"
     #return url
@@ -42,8 +40,17 @@ def main():
         end_date="2025-01-10"
     )
 
-    df, stations_df = format_json_into_dataframe(wheather_data)
-    return df, stations_df
+    print(wheather_data)
+
+    # df, stations_df = format_json_into_dataframe(wheather_data)
+    # df.to_csv("test_file.csv")
+
+    # load_into_gcp_bucket(
+    #     bucket_name="wheather-data",
+    #     source_file_path="test_file.csv",
+    #     destination_blob_name="test_file.csv",
+    #     credentials_file="~/wheather-data-314e6bffbb95.json"
+    # )
 
 if __name__ == "__main__":
     main()
