@@ -10,8 +10,9 @@ from utils import *
 
 load_dotenv()
 VISUALCROSSING_API_KEY = os.getenv("VISUALCROSSING_API_KEY")
-CREDENTIALS_FILE = os.getenv("CREDENTIALS_FILE")
+STORAGE_CREDENTIALS = os.getenv("STORAGE_CREDENTIALS")
 PATH = os.getenv("PROJECT_PATH")
+BUCKET = os.getenv("BUCKET")
 RAW_PATH = "raw/"
 
 def fetch_weather_data(city: str, start_date: str, end_date: str) -> pd.DataFrame:
@@ -76,10 +77,17 @@ def main(extraction_date: str) -> None:
     stations_df.to_csv(PATH + stations_file_name)
 
     load_into_gcp_bucket(
-        bucket_name="wheather-data",
+        bucket_name=BUCKET,
         source_file_path=PATH + wheather_file_name,
         destination_blob_name=wheather_file_name,
-        credentials_file=CREDENTIALS_FILE
+        credentials_file=STORAGE_CREDENTIALS
+    )
+
+    load_into_gcp_bucket(
+        bucket_name=BUCKET,
+        source_file_path=PATH + stations_file_name,
+        destination_blob_name=stations_file_name,
+        credentials_file=STORAGE_CREDENTIALS
     )
 
 if __name__ == "__main__":
