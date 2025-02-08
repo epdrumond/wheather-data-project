@@ -191,3 +191,155 @@ Happy modeling!
 [0m21:22:17.189822 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f994e6708f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f994d0b6db0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f992c1fb6b0>]}
 [0m21:22:17.190135 [debug] [MainThread]: Flushing usage events
 [0m21:22:17.733813 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m19:10:20.897177 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc12807b590>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc128258890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc127cd6e40>]}
+
+
+============================== 19:10:20.904360 | 7a06272c-f432-4fb7-a5be-396d98009c28 ==============================
+[0m19:10:20.904360 [info ] [MainThread]: Running with dbt=1.9.2
+[0m19:10:20.905042 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'profiles_dir': '/home/epdrumond/.dbt', 'log_path': 'logs', 'fail_fast': 'False', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt init', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m19:10:34.663539 [debug] [MainThread]: Starter project path: /home/epdrumond/wheather-data-project/wenv/lib/python3.12/site-packages/dbt/include/starter_project
+[0m19:10:34.684237 [info ] [MainThread]: 
+Your new dbt project "wheather_data_transformation" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m19:10:34.684847 [info ] [MainThread]: Setting up your profile.
+[0m19:11:02.980699 [info ] [MainThread]: Profile wheather_data_transformation written to /home/epdrumond/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m19:11:02.984520 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 43.420746, "process_in_blocks": "248248", "process_kernel_time": 0.318627, "process_mem_max_rss": "204068", "process_out_blocks": "80", "process_user_time": 3.408348}
+[0m19:11:02.985078 [debug] [MainThread]: Command `dbt init` succeeded at 19:11:02.984958 after 43.42 seconds
+[0m19:11:02.985471 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc1287c8bc0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc127d70230>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc1279fec90>]}
+[0m19:11:02.985880 [debug] [MainThread]: Flushing usage events
+[0m19:11:03.522776 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m19:11:12.580471 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f65cf9ddfd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f65d01e66c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f65cfb310d0>]}
+
+
+============================== 19:11:12.583296 | 5e301bc0-6326-4d9c-bb07-5dbbeb6b1af6 ==============================
+[0m19:11:12.583296 [info ] [MainThread]: Running with dbt=1.9.2
+[0m19:11:12.583957 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'profiles_dir': '/home/epdrumond/.dbt', 'log_path': 'logs', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'log_format': 'default', 'target_path': 'None', 'invocation_command': 'dbt debug', 'send_anonymous_usage_stats': 'True'}
+[0m19:11:12.595655 [info ] [MainThread]: dbt version: 1.9.2
+[0m19:11:12.596252 [info ] [MainThread]: python version: 3.12.3
+[0m19:11:12.596765 [info ] [MainThread]: python path: /home/epdrumond/wheather-data-project/wenv/bin/python3
+[0m19:11:12.597422 [info ] [MainThread]: os info: Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39
+[0m19:11:13.283798 [info ] [MainThread]: Using profiles dir at /home/epdrumond/.dbt
+[0m19:11:13.284331 [info ] [MainThread]: Using profiles.yml file at /home/epdrumond/.dbt/profiles.yml
+[0m19:11:13.284831 [info ] [MainThread]: Using dbt_project.yml file at /home/epdrumond/wheather-data-project/wheather-data-project/dbt_project.yml
+[0m19:11:13.285640 [info ] [MainThread]: adapter type: bigquery
+[0m19:11:13.286158 [info ] [MainThread]: adapter version: 1.9.1
+[0m19:11:13.286667 [info ] [MainThread]: Configuration:
+[0m19:11:13.287090 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m19:11:13.287631 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m19:11:13.288245 [info ] [MainThread]: Required dependencies:
+[0m19:11:13.288759 [debug] [MainThread]: Executing "git --help"
+[0m19:11:13.307226 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--config-env=<name>=<envvar>] <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m19:11:13.307691 [debug] [MainThread]: STDERR: "b''"
+[0m19:11:13.307954 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m19:11:13.308256 [info ] [MainThread]: Connection:
+[0m19:11:13.308702 [info ] [MainThread]:   method: oauth
+[0m19:11:13.309050 [info ] [MainThread]:   database: wheather-data
+[0m19:11:13.309398 [info ] [MainThread]:   execution_project: wheather-data
+[0m19:11:13.309752 [info ] [MainThread]:   schema: dev
+[0m19:11:13.310199 [info ] [MainThread]:   location: EU
+[0m19:11:13.310537 [info ] [MainThread]:   priority: interactive
+[0m19:11:13.311219 [info ] [MainThread]:   maximum_bytes_billed: None
+[0m19:11:13.311731 [info ] [MainThread]:   impersonate_service_account: None
+[0m19:11:13.312721 [info ] [MainThread]:   job_retry_deadline_seconds: None
+[0m19:11:13.313303 [info ] [MainThread]:   job_retries: 1
+[0m19:11:13.314053 [info ] [MainThread]:   job_creation_timeout_seconds: None
+[0m19:11:13.314562 [info ] [MainThread]:   job_execution_timeout_seconds: 300
+[0m19:11:13.314997 [info ] [MainThread]:   timeout_seconds: 300
+[0m19:11:13.315788 [info ] [MainThread]:   client_id: None
+[0m19:11:13.316888 [info ] [MainThread]:   token_uri: None
+[0m19:11:13.317726 [info ] [MainThread]:   dataproc_region: None
+[0m19:11:13.318284 [info ] [MainThread]:   dataproc_cluster_name: None
+[0m19:11:13.318644 [info ] [MainThread]:   gcs_bucket: None
+[0m19:11:13.319043 [info ] [MainThread]:   dataproc_batch: None
+[0m19:11:13.319585 [info ] [MainThread]: Registered adapter: bigquery=1.9.1
+[0m19:11:13.424503 [debug] [MainThread]: Acquiring new bigquery connection 'debug'
+[0m19:11:13.424904 [debug] [MainThread]: On debug: select 1 as id
+[0m19:11:13.425185 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m19:11:14.308531 [debug] [MainThread]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=wheather-data&j=bq:EU:9a6d3656-daff-47d5-8400-3db22e9bd497&page=queryresults
+[0m19:11:14.770487 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m19:11:14.771273 [info ] [MainThread]: [31m1 check failed:[0m
+[0m19:11:14.772036 [info ] [MainThread]: Project loading failed for the following reason:
+ project path </home/epdrumond/wheather-data-project/wheather-data-project/dbt_project.yml> not found
+
+[0m19:11:14.773342 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 2.2708924, "process_in_blocks": "4320", "process_kernel_time": 0.212464, "process_mem_max_rss": "211728", "process_out_blocks": "16", "process_user_time": 3.418747}
+[0m19:11:14.773948 [debug] [MainThread]: Command `dbt debug` failed at 19:11:14.773825 after 2.27 seconds
+[0m19:11:14.774253 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m19:11:14.774575 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f65cfd6d850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f65ab3f0230>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f65d2da3290>]}
+[0m19:11:14.774915 [debug] [MainThread]: Flushing usage events
+[0m19:11:15.253717 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m19:11:18.819355 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe45c57a1b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe45c6873e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe45c095a60>]}
+
+
+============================== 19:11:18.822160 | 8cf9f5cc-0e66-4533-a975-ce117fc6e4b9 ==============================
+[0m19:11:18.822160 [info ] [MainThread]: Running with dbt=1.9.2
+[0m19:11:18.822670 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/epdrumond/.dbt', 'fail_fast': 'False', 'warn_error': 'None', 'log_path': 'logs', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt debug', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m19:11:18.832391 [info ] [MainThread]: dbt version: 1.9.2
+[0m19:11:18.832834 [info ] [MainThread]: python version: 3.12.3
+[0m19:11:18.833250 [info ] [MainThread]: python path: /home/epdrumond/wheather-data-project/wenv/bin/python3
+[0m19:11:18.833628 [info ] [MainThread]: os info: Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39
+[0m19:11:19.511160 [info ] [MainThread]: Using profiles dir at /home/epdrumond/.dbt
+[0m19:11:19.511708 [info ] [MainThread]: Using profiles.yml file at /home/epdrumond/.dbt/profiles.yml
+[0m19:11:19.512136 [info ] [MainThread]: Using dbt_project.yml file at /home/epdrumond/wheather-data-project/wheather-data-project/dbt_project.yml
+[0m19:11:19.512719 [info ] [MainThread]: adapter type: bigquery
+[0m19:11:19.513395 [info ] [MainThread]: adapter version: 1.9.1
+[0m19:11:19.513810 [info ] [MainThread]: Configuration:
+[0m19:11:19.514192 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m19:11:19.514633 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m19:11:19.515366 [info ] [MainThread]: Required dependencies:
+[0m19:11:19.516151 [debug] [MainThread]: Executing "git --help"
+[0m19:11:19.518986 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--config-env=<name>=<envvar>] <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m19:11:19.519538 [debug] [MainThread]: STDERR: "b''"
+[0m19:11:19.519842 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m19:11:19.520236 [info ] [MainThread]: Connection:
+[0m19:11:19.520595 [info ] [MainThread]:   method: oauth
+[0m19:11:19.520966 [info ] [MainThread]:   database: wheather-data
+[0m19:11:19.521324 [info ] [MainThread]:   execution_project: wheather-data
+[0m19:11:19.521667 [info ] [MainThread]:   schema: dev
+[0m19:11:19.521977 [info ] [MainThread]:   location: EU
+[0m19:11:19.522335 [info ] [MainThread]:   priority: interactive
+[0m19:11:19.522664 [info ] [MainThread]:   maximum_bytes_billed: None
+[0m19:11:19.522998 [info ] [MainThread]:   impersonate_service_account: None
+[0m19:11:19.523364 [info ] [MainThread]:   job_retry_deadline_seconds: None
+[0m19:11:19.523815 [info ] [MainThread]:   job_retries: 1
+[0m19:11:19.524497 [info ] [MainThread]:   job_creation_timeout_seconds: None
+[0m19:11:19.524965 [info ] [MainThread]:   job_execution_timeout_seconds: 300
+[0m19:11:19.525368 [info ] [MainThread]:   timeout_seconds: 300
+[0m19:11:19.525793 [info ] [MainThread]:   client_id: None
+[0m19:11:19.526161 [info ] [MainThread]:   token_uri: None
+[0m19:11:19.526533 [info ] [MainThread]:   dataproc_region: None
+[0m19:11:19.527309 [info ] [MainThread]:   dataproc_cluster_name: None
+[0m19:11:19.527696 [info ] [MainThread]:   gcs_bucket: None
+[0m19:11:19.528108 [info ] [MainThread]:   dataproc_batch: None
+[0m19:11:19.528666 [info ] [MainThread]: Registered adapter: bigquery=1.9.1
+[0m19:11:19.607601 [debug] [MainThread]: Acquiring new bigquery connection 'debug'
+[0m19:11:19.607993 [debug] [MainThread]: On debug: select 1 as id
+[0m19:11:19.608289 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m19:11:20.487649 [debug] [MainThread]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=wheather-data&j=bq:EU:f204c60e-9417-4074-abbc-d955c42bc2ab&page=queryresults
+[0m19:11:20.861709 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m19:11:20.862329 [info ] [MainThread]: [31m1 check failed:[0m
+[0m19:11:20.862785 [info ] [MainThread]: Project loading failed for the following reason:
+ project path </home/epdrumond/wheather-data-project/wheather-data-project/dbt_project.yml> not found
+
+[0m19:11:20.864425 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 2.1311564, "process_in_blocks": "0", "process_kernel_time": 0.193555, "process_mem_max_rss": "212464", "process_out_blocks": "8", "process_user_time": 3.387214}
+[0m19:11:20.864920 [debug] [MainThread]: Command `dbt debug` failed at 19:11:20.864804 after 2.13 seconds
+[0m19:11:20.865296 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m19:11:20.865691 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe45f1af290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe45bed0e90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe45c095a60>]}
+[0m19:11:20.866132 [debug] [MainThread]: Flushing usage events
+[0m19:11:21.349467 [debug] [MainThread]: An error was encountered while trying to flush usage events

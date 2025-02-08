@@ -11,8 +11,8 @@ from utils import *
 load_dotenv()
 VISUALCROSSING_API_KEY = os.getenv("VISUALCROSSING_API_KEY")
 CREDENTIALS_FILE = os.getenv("CREDENTIALS_FILE")
-PATH=os.getenv("PROJECT_PATH")
-RAW_PATH="raw/"
+PATH = os.getenv("PROJECT_PATH")
+RAW_PATH = "raw/"
 
 def fetch_weather_data(city: str, start_date: str, end_date: str) -> pd.DataFrame:
     """
