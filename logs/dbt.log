@@ -343,3 +343,64 @@ Happy modeling!
 [0m19:11:20.865691 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe45f1af290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe45bed0e90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe45c095a60>]}
 [0m19:11:20.866132 [debug] [MainThread]: Flushing usage events
 [0m19:11:21.349467 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m10:56:24.182153 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f23bdfd6a80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f23bc7cab40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f23bc6ff9b0>]}
+
+
+============================== 10:56:24.186879 | 97951b2b-4377-4766-a585-e60a310a3011 ==============================
+[0m10:56:24.186879 [info ] [MainThread]: Running with dbt=1.9.2
+[0m10:56:24.187802 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/epdrumond/.dbt', 'version_check': 'True', 'warn_error': 'None', 'log_path': 'logs', 'fail_fast': 'False', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'target_path': 'None', 'invocation_command': 'dbt debug', 'send_anonymous_usage_stats': 'True'}
+[0m10:56:24.198713 [info ] [MainThread]: dbt version: 1.9.2
+[0m10:56:24.199231 [info ] [MainThread]: python version: 3.12.3
+[0m10:56:24.199709 [info ] [MainThread]: python path: /home/epdrumond/wheather-data-project/wenv/bin/python3
+[0m10:56:24.200129 [info ] [MainThread]: os info: Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39
+[0m10:56:23.908795 [info ] [MainThread]: Using profiles dir at /home/epdrumond/.dbt
+[0m10:56:23.909394 [info ] [MainThread]: Using profiles.yml file at /home/epdrumond/.dbt/profiles.yml
+[0m10:56:23.910026 [info ] [MainThread]: Using dbt_project.yml file at /home/epdrumond/wheather-data-project/wheather-data-project/dbt_project.yml
+[0m10:56:23.911293 [info ] [MainThread]: adapter type: bigquery
+[0m10:56:23.912042 [info ] [MainThread]: adapter version: 1.9.1
+[0m10:56:23.912801 [info ] [MainThread]: Configuration:
+[0m10:56:23.913462 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m10:56:23.914015 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m10:56:23.914564 [info ] [MainThread]: Required dependencies:
+[0m10:56:23.915054 [debug] [MainThread]: Executing "git --help"
+[0m10:56:23.917408 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--config-env=<name>=<envvar>] <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m10:56:23.918024 [debug] [MainThread]: STDERR: "b''"
+[0m10:56:23.918447 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m10:56:23.918941 [info ] [MainThread]: Connection:
+[0m10:56:23.919509 [info ] [MainThread]:   method: oauth
+[0m10:56:23.919991 [info ] [MainThread]:   database: wheather-data
+[0m10:56:23.920446 [info ] [MainThread]:   execution_project: wheather-data
+[0m10:56:23.920885 [info ] [MainThread]:   schema: dev
+[0m10:56:23.921323 [info ] [MainThread]:   location: EU
+[0m10:56:23.921685 [info ] [MainThread]:   priority: interactive
+[0m10:56:23.922085 [info ] [MainThread]:   maximum_bytes_billed: None
+[0m10:56:23.922554 [info ] [MainThread]:   impersonate_service_account: None
+[0m10:56:23.923304 [info ] [MainThread]:   job_retry_deadline_seconds: None
+[0m10:56:23.924061 [info ] [MainThread]:   job_retries: 1
+[0m10:56:23.924616 [info ] [MainThread]:   job_creation_timeout_seconds: None
+[0m10:56:23.925103 [info ] [MainThread]:   job_execution_timeout_seconds: 300
+[0m10:56:23.925585 [info ] [MainThread]:   timeout_seconds: 300
+[0m10:56:23.926016 [info ] [MainThread]:   client_id: None
+[0m10:56:23.926531 [info ] [MainThread]:   token_uri: None
+[0m10:56:23.927000 [info ] [MainThread]:   dataproc_region: None
+[0m10:56:23.928071 [info ] [MainThread]:   dataproc_cluster_name: None
+[0m10:56:23.929035 [info ] [MainThread]:   gcs_bucket: None
+[0m10:56:23.929850 [info ] [MainThread]:   dataproc_batch: None
+[0m10:56:23.931133 [info ] [MainThread]: Registered adapter: bigquery=1.9.1
+[0m10:56:24.031245 [debug] [MainThread]: Acquiring new bigquery connection 'debug'
+[0m10:56:24.031665 [debug] [MainThread]: On debug: select 1 as id
+[0m10:56:24.032177 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m10:56:24.630002 [debug] [MainThread]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=wheather-data&j=bq:EU:b61068e0-dc78-4359-8a69-26a77b4a826f&page=queryresults
+[0m10:56:25.070251 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m10:56:25.071675 [info ] [MainThread]: [31m1 check failed:[0m
+[0m10:56:25.073003 [info ] [MainThread]: Project loading failed for the following reason:
+ project path </home/epdrumond/wheather-data-project/wheather-data-project/dbt_project.yml> not found
+
+[0m10:56:25.076018 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 2.1212156, "process_in_blocks": "2072", "process_kernel_time": 0.184548, "process_mem_max_rss": "212216", "process_out_blocks": "24", "process_user_time": 3.603551}
+[0m10:56:25.076987 [debug] [MainThread]: Command `dbt debug` failed at 10:56:25.076766 after 2.12 seconds
+[0m10:56:25.077709 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m10:56:25.078335 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f23bccd7260>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f23bc611100>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f23bfa37290>]}
+[0m10:56:25.078818 [debug] [MainThread]: Flushing usage events
+[0m10:56:25.849107 [debug] [MainThread]: An error was encountered while trying to flush usage events

@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: wheather_data
-    schema: raw
+    schema: src
     tables:
       - name: wheather
         identifier: src_wheather
