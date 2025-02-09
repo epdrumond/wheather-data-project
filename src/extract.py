@@ -61,7 +61,6 @@ def main(extraction_date: str) -> None:
         )
 
         wheather, stations = format_json_into_dataframe(wheather_data)
-        wheather["city"] = city_name
         stations["city"] = city_name
 
         wheather_df.append(wheather)
