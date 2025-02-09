@@ -9,6 +9,5 @@ select
   distance as distance_from_location,
   latitude,
   longitude,
-  cast(datetime as timestamp) as snapshot_date,
-  split(city, ',')[0] as city
+  cast(datetime as timestamp) as snapshot_date
 from src_stations 
