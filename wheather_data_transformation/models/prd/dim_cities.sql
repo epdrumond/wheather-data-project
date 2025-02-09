@@ -12,14 +12,16 @@ cities_coordinates as (
   select distinct 
     city_name,
     latitude,
-    longitude
+    longitude,
+    timezone_offset
   from stg_wheather 
 )
 
 select 
   ct.*,
   coord.latitude,
-  coord.longitude
+  coord.longitude,
+  coord.timezone_offset
 from 
   seed_cities as ct 
   left join cities_coordinates as coord on (
