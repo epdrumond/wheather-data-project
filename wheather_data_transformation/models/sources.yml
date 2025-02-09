@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: wheather_data
+    schema: raw
+    tables:
+      - name: wheather
+        identifier: src_wheather
+        
+      - name: stations
+        identifier: src_stations
