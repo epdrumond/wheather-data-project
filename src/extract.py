@@ -45,14 +45,13 @@ def main(extraction_date: str) -> None:
     extraction_date_str = extraction_date.replace("-", "")
 
     #Load list of cities for wheather data extraction and prepare
-    cities = pd.read_csv(PATH + "cities.txt", names=["city_name"])    
-    cities["enconded_city_name"] = [parse.quote(city) for city in cities["city_name"]]
+    cities = pd.read_csv(PATH + "cities.txt")    
 
     wheather_df = []
     stations_df = []
     for _, row in cities.iterrows():
-        city_name = row["city_name"]
-        enconded_city_name = row["enconded_city_name"]
+        city_name = ','.join([row["city"], row["state"], row["country"]])
+        enconded_city_name = parse.quote(city_name)
         
         wheather_data = fetch_weather_data(
             city=enconded_city_name,
