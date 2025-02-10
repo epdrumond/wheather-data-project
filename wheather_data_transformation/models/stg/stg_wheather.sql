@@ -33,7 +33,7 @@ select
     windgust as wind_gust,
     windspeed as wind_speed,
     winddir as wind_direction,
-    pressure as sea_level_pressue,
+    pressure as sea_level_pressure,
     cloudcover as cloud_coverage,
     visibility,
     solarradiation as solar_radiation,

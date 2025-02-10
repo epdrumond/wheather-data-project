@@ -72,11 +72,11 @@ models:
               inclusive: true
 
 
-  - name: fact_wheather_measurements
+  - name: fact_wheather_measurement
     description: Daily data on wheather measurements
     tests:
       - dbt_expectations.expect_table_row_count_to_equal_other_table:
-        compare_model: source("wheather_data", "wheather")
+          compare_model: source("wheather_data", "wheather")
 
     columns:
       - name: fact_wheather_measurement_id		
@@ -94,81 +94,81 @@ models:
         description: Maximum temperature recorded (Celsius) 
         tests:
           - dbt_expectations.expect_column_quantile_values_to_be_between:
-            quantile: 0.9
-            min_value: 0
-            max_value: 40
+              quantile: 0.9
+              min_value: 0
+              max_value: 40
 
       - name: min_temperature		
         description: Minimum temperature recorded (Celsius)
         tests:
           - dbt_expectations.expect_column_quantile_values_to_be_between:
-            quantile: 0.9
-            min_value: 0
-            max_value: 40
+              quantile: 0.9
+              min_value: 0
+              max_value: 40
       
       - name: mean_temperature	
         description: Mean temperature (Celsius)
         tests:
         tests:
           - dbt_expectations.expect_column_quantile_values_to_be_between:
-            quantile: 0.9
-            min_value: 0
-            max_value: 40
+              quantile: 0.9
+              min_value: 0
+              max_value: 40
 
       - name: max_apparent_temperarature
         description: Maximum apparent temperature (Celsius)
         tests:
           - dbt_expectations.expect_column_quantile_values_to_be_between:
-            quantile: 0.9
-            min_value: 0
-            max_value: 40
+              quantile: 0.9
+              min_value: 0
+              max_value: 40
 
       - name: min_apparent_temperarature
         description: Minimum apparent temperature (Celsius)
         tests:
           - dbt_expectations.expect_column_quantile_values_to_be_between:
-            quantile: 0.9
-            min_value: 0
-            max_value: 40
+              quantile: 0.9
+              min_value: 0
+              max_value: 40
 
       - name: mean_apparent_temperature
         description: Mean apparent temperature (Celsius)
         tests:
           - dbt_expectations.expect_column_quantile_values_to_be_between:
-            quantile: 0.9
-            min_value: 0
-            max_value: 40
+              quantile: 0.9
+              min_value: 0
+              max_value: 40
       
       - name: relative_humidity
         description: Relative humidity (%)
         tests:
           - dbt_utils.accepted_range:
-            min_value: 0.0
-            max_value: 100.0
-            inclusive: true
+              min_value: 0.0
+              max_value: 100.0
+              inclusive: true
       
       - name: precipitation
         description: Precipitation (mm)
         tests:
           - dbt_utils.accepted_range:
-            min_value: 0.0
-            inclusive: true
+              min_value: 0.0
+              inclusive: true
 
       - name: precipitation_probability
         description: Precipitation chance (%)
         tests:
           - dbt_utils.accepted_range:
-            min_value: 0.0
-            max_value: 100.0
-            inclusive: true
+              min_value: 0.0
+              max_value: 100.0
+              inclusive: true
 
       - name: precipitation_coverage
         description: Percentage of day in which precipitation was recorded (%)
         tests:
           - dbt_utils.accepted_range:
-            min_value: 0.0
-            max_value: 100.0
-            inclusive: true
+              min_value: 0.0
+              max_value: 100.0
+              inclusive: true
 
       - name: precipitation_types
         description: Array of precipitation types recorded 
@@ -177,62 +177,62 @@ models:
         description: Snow precipitation (cm)
         tests:
           - dbt_utils.accepted_range:
-            min_value: 0.0
-            inclusive: true
+              min_value: 0.0
+              inclusive: true
 
       - name: snow_depth
         description: Average amount of snow on the ground for the day (cm)
         tests:
           - dbt_utils.accepted_range:
-            min_value: 0.0
-            inclusive: true
+              min_value: 0.0
+              inclusive: true
 
       - name: wind_gust
         description: The maximum wind speed measured over a short amount of time (KPH)
         tests:
           - dbt_utils.accepted_range:
-            min_value: 0.0
-            inclusive: true
+              min_value: 0.0
+              inclusive: true
 
       - name: wind_speed
         description: Maximum wind speed recorded over the hourly measurements (KPH)
         tests:
           - dbt_utils.accepted_range:
-            min_value: 0.0
-            inclusive: true
+              min_value: 0.0
+              inclusive: true
 
       - name: wind_direction
         description: Wind direction (degrees)
         tests:
           - dbt_utils.accepted_range:
-            min_value: 0.0
-            max_value: 360.0
-            inclusive: true
+              min_value: 0.0
+              max_value: 360.0
+              inclusive: true
 
       - name: sea_level_pressure
         description: Sea level pressure (mb)
         tests:
           - dbt_expectations.expect_column_quantile_values_to_be_between:
-            quantile: 0.99
-            min_value: 1000
-            max_value: 1050
-            config:
-              severity: warn
+              quantile: 0.99
+              min_value: 1000
+              max_value: 1050
+              config:
+                severity: warn
 
       - name: cloud_coverage
         description: Percentage of the area covered by clouds (%)
         tests:
           - dbt_utils.accepted_range:
-            min_value: 0.0
-            max_value: 100.0
-            inclusive: true
+              min_value: 0.0
+              max_value: 100.0
+              inclusive: true
 
       - name: visibility
         description: Maximum distance that can be seen in daylight (KM)
         tests:
           - dbt_utils.accepted_range:
-            min_value: 0.0
-            inclusive: true
+              min_value: 0.0
+              inclusive: true
 
       - name: solar_radiation
         description: Maximum power recorded for the hourly measurements along the day (W/m2)
@@ -244,9 +244,9 @@ models:
         description: Indicates the level of exposure to UV radiation. Goes from 0 (no exposure) to 10 (high exposure)
         tests:
           - dbt_utils.accepted_range:
-            min_value: 0.0
-            max_value: 10.0
-            inclusive: true
+              min_value: 0.0
+              max_value: 10.0
+              inclusive: true
 
       - name: sunrise_time
         description: Time of sunrise in local time
@@ -258,15 +258,15 @@ models:
         description: Phase of the moon (New Moon, Waxing Crescent, First Quarter, Waxing Gibbous, Full Moon, Waning Gibbous, Last Quarter, Waning Crescent) 
         tests:
           - accepted_values:
-            values:
-              - "New Moon"
-              - "Waxing Crescent"
-              - "First Quarter"
-              - "Waxing Gibbous"
-              - "Full Moon"
-              - "Waning Gibbous"
-              - "Last Quarter"
-              - "Waning Crescent"
+              values:
+                - "New Moon"
+                - "Waxing Crescent"
+                - "First Quarter"
+                - "Waxing Gibbous"
+                - "Full Moon"
+                - "Waning Gibbous"
+                - "Last Quarter"
+                - "Waning Crescent"
 
       - name: conditions
         description: Array of wheather conditions 
