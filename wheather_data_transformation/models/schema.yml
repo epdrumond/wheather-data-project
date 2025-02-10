@@ -2,8 +2,75 @@ version: 2
 
 models:
   - name: dim_cities
+    description: Data on cities with wheather measurements
+    
+    columns:
+      - name: city
+        description: City name (unique ID)
+        tests:
+          - unique
+          - not_null
+
+      - name: state
+        description: State in which the city is located
+
+      - name: country
+        description: Country in which the city is located
+
+      - name: latitude
+        description: Latitude of the city
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: -90.0
+              max_value: 90.0
+              inclusive: true
+
+      - name: longitude
+        description: Longitude of the city
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: -180.0
+              max_value: 180.0
+              inclusive: true
+
+      - name: timezone_offset
+        description: Local time hours offset from UTC
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: -14.0
+              max_value: 14.0
+              inclusive: true
+
 
   - name: dim_stations
+    description: Data on station sources for the wheather measurements
+    
+    columns:
+      - name: station_id
+        description: Unique identifier of the station
+        tests:
+          - unique
+          - not_null
+
+      - name: station_name
+        description: Station name
+
+      - name: latitude
+        description: Station latitude
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: -90.0
+              max_value: 90.0
+              inclusive: true
+
+      - name: longitude
+        description: Station longitude
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: -180.0
+              max_value: 180.0
+              inclusive: true
+
 
   - name: fact_wheather_measurements
     description: Daily data on wheather measurements
