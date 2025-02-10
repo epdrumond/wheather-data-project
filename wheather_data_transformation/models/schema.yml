@@ -278,4 +278,7 @@ models:
         description: Name of the city of the measurements
         tests:
           - not_null
+          - relationships:
+              to: ref("dim_cities")
+              field: city
     
