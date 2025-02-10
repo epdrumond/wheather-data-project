@@ -34,7 +34,7 @@ select
     windspeed as wind_speed,
     winddir as wind_direction,
     pressure as sea_level_pressue,
-    cloudcover as cloud_cover,
+    cloudcover as cloud_coverage,
     visibility,
     solarradiation as solar_radiation,
     solarenergy as solar_energy,
@@ -42,7 +42,7 @@ select
     sunrise as sunrise_time,
     sunset as sunset_time,
     moonphase,
-    split(conditions, ',') as conditions,
+    split(conditions, ', ') as conditions,
     split(
         regexp_replace(
             replace(
