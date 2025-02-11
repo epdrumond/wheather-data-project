@@ -4,7 +4,7 @@ import requests
 import pandas as pd
 from dotenv import load_dotenv
 import urllib.parse as parse
-from unidecode import unidecode
+from tqdm import tqdm
 
 from utils import * 
 
@@ -40,23 +40,24 @@ def fetch_weather_data(city: str, start_date: str, end_date: str) -> pd.DataFram
 
     return response.json()
 
-def main(extraction_date: str) -> None:
+def main(start_date: str, end_date: str) -> None:
 
-    extraction_date_str = extraction_date.replace("-", "")
+    start_date_str = start_date.replace("-", "")
+    end_date_str = end_date.replace("-", "")
 
     #Load list of cities for wheather data extraction and prepare
     cities = pd.read_csv(PATH + "cities.txt")    
 
     wheather_df = []
     stations_df = []
-    for _, row in cities.iterrows():
+    for _, row in tqdm(cities.iterrows()):
         city_name = ','.join([row["city"], row["state"], row["country"]])
         enconded_city_name = parse.quote(city_name)
         
         wheather_data = fetch_weather_data(
             city=enconded_city_name,
-            start_date=extraction_date,
-            end_date=extraction_date
+            start_date=start_date,
+            end_date=end_date
         )
 
         wheather, stations = format_json_into_dataframe(wheather_data)
@@ -68,8 +69,8 @@ def main(extraction_date: str) -> None:
     wheather_df = pd.concat(wheather_df)
     stations_df = pd.concat(stations_df)
 
-    wheather_file_name = RAW_PATH + f"wheather_{extraction_date_str}.csv"
-    stations_file_name = RAW_PATH + f"stations_{extraction_date_str}.csv"
+    wheather_file_name = RAW_PATH + f"wheather_{start_date_str}_{end_date_str}.csv"
+    stations_file_name = RAW_PATH + f"stations_{start_date_str}_{end_date_str}.csv"
     
     wheather_df.to_csv(PATH + wheather_file_name)
     stations_df.to_csv(PATH + stations_file_name)
@@ -89,5 +90,10 @@ def main(extraction_date: str) -> None:
     )
 
 if __name__ == "__main__":
-    extraction_date = sys.argv[1]
-    main(extraction_date)
+    start_date = sys.argv[1]
+    try:
+        end_date = sys.argv[2]
+    except:
+        end_date = start_date
+    
+    main(start_date, end_date)
