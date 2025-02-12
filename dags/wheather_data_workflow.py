@@ -3,7 +3,7 @@ from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
 from includes.wheather_utils import extract_wheather_data
 
-default_dag_args = {
+default_args = {
     "owner": "airflow",
     "start_date": datetime(2024, 1, 1)
 }
@@ -14,16 +14,17 @@ default_extraction_args = {
 
 dag = DAG(
     dag_id="wheather_dag",
-    default_args=default_dag_args,
+    default_args=default_args,
     schedule_interval="0 0 * * 1",
     catchup=False
 )
 
 extract_data = PythonOperator(
     task_id="extract_data",
-    python_callable=extract_wheather_data(
-        default_extraction_args["start_date"],
-        default_extraction_args["end_date"]
-    ),
+    python_callable=extract_wheather_data,
+    op_kwargs={
+        "start_date": default_extraction_args["start_date"],
+        "end_date": default_extraction_args["end_date"]
+    },
     dag=dag
 )

@@ -2,8 +2,8 @@ import os
 import sys
 import requests
 import pandas as pd
-from dotenv import load_dotenv
 import urllib.parse as parse
+from airflow.models import Variable
 
 
 def format_json_into_dataframe(data:dict) -> pd.DataFrame:
@@ -46,8 +46,7 @@ def fetch_weather_data(city: str, start_date: str, end_date: str) -> pd.DataFram
         pd.Dataframe: Dataframe with the extracted wheather data
     """
 
-    load_dotenv()
-    VISUALCROSSING_API_KEY = os.getenv("VISUALCROSSING_API_KEY")
+    VISUALCROSSING_API_KEY = Variable.get("VISUALCROSSING_API_KEY")
 
     url = f"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{city}/{start_date}/{end_date}?unitGroup=metric&include=days&key={VISUALCROSSING_API_KEY}&contentType=json"
     response = requests.get(url)
@@ -61,8 +60,7 @@ def fetch_weather_data(city: str, start_date: str, end_date: str) -> pd.DataFram
 def extract_wheather_data(start_date: str, end_date: str) -> None:
 
     #Load required environment variables
-    load_dotenv()
-    PATH = os.getenv("PROJECT_PATH")
+    PATH = Variable.get("EXTRACTION_PATH")
     RAW_PATH = "raw/"
 
     #Transform provided date range to API url format
@@ -70,7 +68,9 @@ def extract_wheather_data(start_date: str, end_date: str) -> None:
     end_date_str = end_date.replace("-", "")
 
     #Load list of cities for wheather data extraction and prepare
-    cities = pd.read_csv(PATH + "cities.txt")    
+    cities = pd.read_csv(PATH + "cities.txt")
+
+    print(cities)    
 
     wheather_df = []
     stations_df = []
