@@ -1,24 +1,29 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
+from includes.wheather_utils import extract_wheather_data
 
-def test():
-    print("Edilson")
-
-default_args = {
+default_dag_args = {
     "owner": "airflow",
     "start_date": datetime(2024, 1, 1)
+}
+default_extraction_args = {
+    "start_date": "2024-01-01",
+    "end_date": "2024-01-02"
 }
 
 dag = DAG(
     dag_id="wheather_dag",
-    default_args=default_args,
+    default_args=default_dag_args,
     schedule_interval="0 0 * * 1",
     catchup=False
 )
 
-extract_wheather_data = PythonOperator(
-    task_id="extract_wheather_data",
-    python_callable=test,
+extract_data = PythonOperator(
+    task_id="extract_data",
+    python_callable=extract_wheather_data(
+        default_extraction_args["start_date"],
+        default_extraction_args["end_date"]
+    ),
     dag=dag
 )
