@@ -1,7 +1,7 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
-from includes.wheather_utils import extract_wheather_data
+from includes.wheather_utils import extract_wheather_data, load_wheather_data
 
 default_args = {
     "owner": "airflow",
@@ -28,3 +28,16 @@ extract_data = PythonOperator(
     },
     dag=dag
 )
+
+load_data = PythonOperator(
+    task_id="load_data",
+    python_callable=load_wheather_data,
+    op_kwargs={
+        "source_dataset": "src",
+        "source_wheather_table": "src_wheather",
+        "source_stations_table": "src_stations"
+    },
+    dag=dag
+)
+
+extract_data >> load_data

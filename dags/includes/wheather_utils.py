@@ -3,8 +3,13 @@ import sys
 import requests
 import pandas as pd
 import urllib.parse as parse
+
 from airflow.models import Variable
 
+from google.cloud import bigquery
+from google.cloud import storage
+
+# EXTRACTION FUNCTIONS --------------------------------------------------------------
 
 def format_json_into_dataframe(data:dict) -> pd.DataFrame:
     """
@@ -57,7 +62,15 @@ def fetch_weather_data(city: str, start_date: str, end_date: str) -> pd.DataFram
 
     return response.json()
 
-def extract_wheather_data(start_date: str, end_date: str) -> None:
+
+def extract_wheather_data(start_date: str, end_date: str, ti: str = None) -> None:
+    """
+    Extract wheather data through API calls and store it in local files
+
+    Parameters:
+        start_date: Start date for the extraction period formatted as a string
+        end_date: End date for the extraction period formatted as a string
+    """
 
     #Load required environment variables
     PATH = Variable.get("EXTRACTION_PATH")
@@ -69,8 +82,6 @@ def extract_wheather_data(start_date: str, end_date: str) -> None:
 
     #Load list of cities for wheather data extraction and prepare
     cities = pd.read_csv(PATH + "cities.txt")
-
-    print(cities)    
 
     wheather_df = []
     stations_df = []
@@ -98,4 +109,122 @@ def extract_wheather_data(start_date: str, end_date: str) -> None:
     
     wheather_df.to_csv(PATH + wheather_file_name)
     stations_df.to_csv(PATH + stations_file_name)
+
+    ti.xcom_push(key="wheather_file_name", value=wheather_file_name)
+    ti.xcom_push(key="stations_file_name", value=stations_file_name)
+
+
+# LOAD FUNCTIONS --------------------------------------------------------------------
+def load_into_gcp_bucket(
+        bucket_name: str,
+        source_file_path: str,
+        destination_blob_name: str,
+        credentials_file: str,
+) -> None:
+    """
+    Load locally stored data file into GCP bucket
+
+    Parameters:
+        bucket_name: Name of the bucket in which the file should be storaged
+        source_file_path: Path of the source file to be stored
+        destination_blob_name: File name at the destination bucket
+        credentials_file: File containing the credentials for service account 
+            responsible for the transfer
+
+    Returns:
+        int
+    """
+
+    #Initialize storage client and select destination bucket
+    storage_client = storage.Client.from_service_account_json(credentials_file)
+    bucket = storage_client.bucket(bucket_name)
+
+    #Upload file 
+    blob = bucket.blob(destination_blob_name)
+    blob.upload_from_filename(source_file_path)
+
+
+def load_from_bucket(
+        bucket_name: str, 
+        source_blob_path: str, 
+        destination_dataset: str,
+        destination_table: str,
+        credentials_file: str
+) -> None:
+    """
+    Loads an specified table with data from a selected file
+
+    Parameters:
+        bucket_name: Name of the bucket in which the source files are stored
+        source_blob_path: Path to the file withing the bucket
+        destination_dataset: Dataset of the destination table
+        destination_table: Destination table name
+        credentials_file: Path to the file with the BigQuery credentials 
+    """
+    bq_client = bigquery.Client.from_service_account_json(credentials_file)
+
+    query = f"""
+    load data overwrite {destination_dataset}.{destination_table}
+    from files (
+        format = 'CSV',
+        uris = ['gs://{bucket_name}{source_blob_path}']
+    );
+    """
+    job = bq_client.query(query)
+    print(job.result())
+
+def load_wheather_data(
+        source_dataset: str,
+        source_wheather_table: str,
+        source_stations_table: str,
+        ti: str = None
+) -> None:
+    """
+    """
+    # Fetch variables and data from previous tasks
+    BUCKET = Variable.get("BUCKET")
+    PATH = Variable.get("EXTRACTION_PATH")
+    STORAGE_CREDENTIALS = Variable.get("STORAGE_CREDENTIALS")
+    BIGQUERY_CREDENTIALS = Variable.get("BIGQUERY_CREDENTIALS")
+    
+    wheather_file_name = ti.xcom_pull(key="wheather_file_name", task_ids="extract_data")
+    stations_file_name = ti.xcom_pull(key="stations_file_name", task_ids="extract_data")
+
+    # Load files into a GCP bucket
+    load_into_gcp_bucket(
+        bucket_name=BUCKET,
+        source_file_path=PATH + wheather_file_name,
+        destination_blob_name=wheather_file_name,
+        credentials_file=STORAGE_CREDENTIALS
+    )
+
+    load_into_gcp_bucket(
+        bucket_name=BUCKET,
+        source_file_path=PATH + stations_file_name,
+        destination_blob_name=stations_file_name,
+        credentials_file=STORAGE_CREDENTIALS
+    )
+
+    # Delete local files
+    # os.remove(PATH + wheather_file_name)
+    # os.remove(PATH + stations_file_name)
+
+    # Load data from GCP bucket files into tables
+    #Load wheather data
+    load_from_bucket(
+        bucket_name=BUCKET,
+        source_blob_path="/raw/wheather_*.csv",
+        destination_dataset=source_dataset,
+        destination_table=source_wheather_table,
+        credentials_file=BIGQUERY_CREDENTIALS
+    )
+
+    #Load stations data
+    load_from_bucket(
+        bucket_name=BUCKET,
+        source_blob_path="/raw/sources_*.csv",
+        destination_dataset=source_dataset,
+        destination_table=source_stations_table,
+        credentials_file=BIGQUERY_CREDENTIALS
+    )
 
