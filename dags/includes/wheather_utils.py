@@ -171,7 +171,6 @@ def load_from_bucket(
     );
     """
     job = bq_client.query(query)
-    print(job.result())
 
 def load_wheather_data(
         source_dataset: str,
@@ -206,8 +205,8 @@ def load_wheather_data(
     )
 
     # Delete local files
-    # os.remove(PATH + wheather_file_name)
-    # os.remove(PATH + stations_file_name)
+    os.remove(PATH + wheather_file_name)
+    os.remove(PATH + stations_file_name)
 
     # Load data from GCP bucket files into tables
     #Load wheather data

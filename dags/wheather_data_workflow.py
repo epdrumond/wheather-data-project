@@ -8,8 +8,8 @@ default_args = {
     "start_date": datetime(2024, 1, 1)
 }
 default_extraction_args = {
-    "start_date": "2024-01-01",
-    "end_date": "2024-01-02"
+    "start_date": "2024-01-03",
+    "end_date": "2024-01-04"
 }
 
 dag = DAG(
