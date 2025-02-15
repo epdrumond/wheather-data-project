@@ -1,7 +1,14 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from datetime import datetime, timedelta
+from airflow.operators.bash_operator import BashOperator
+from airflow.models import Variable
+
+from datetime import datetime
+
 from includes.wheather_utils import extract_wheather_data, load_wheather_data
+
+DBT_PROJECT_DIR = Variable.get("DBT_PROJECT_DIR")
+DBT_PROFILES_DIR = Variable.get("DBT_PROFILES_DIR")
 
 default_args = {
     "owner": "airflow",
@@ -40,4 +47,11 @@ load_data = PythonOperator(
     dag=dag
 )
 
-extract_data >> load_data
+transform_data = BashOperator(
+    task_id="transform_data",
+    bash_command=f"dbt run --project-dir {DBT_PROJECT_DIR} --profiles-dir {DBT_PROFILES_DIR}",
+    dag=dag
+)
+
+extract_data >> load_data 
+load_data >> transform_data

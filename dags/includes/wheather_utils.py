@@ -221,7 +221,7 @@ def load_wheather_data(
     #Load stations data
     load_from_bucket(
         bucket_name=BUCKET,
-        source_blob_path="/raw/sources_*.csv",
+        source_blob_path="/raw/stations_*.csv",
         destination_dataset=source_dataset,
         destination_table=source_stations_table,
         credentials_file=BIGQUERY_CREDENTIALS
