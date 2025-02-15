@@ -57,6 +57,6 @@ where true
         and measurement_date >= '{{ var("start_date") }}'
         and measurement_date <= '{{ var("end_date") }}'
     {% else %}
-        and measurement_date > (select max(measurement_date from {{ this }}))
+        and measurement_date > (select max(measurement_date) from {{ this }})
     {% endif %}
 {% endif %}
