@@ -19,6 +19,8 @@ default_args = {
     "start_date": datetime(2024, 1, 1)
 }
 
+    
+
 with DAG(
     dag_id="wheather_dag",
     default_args=default_args,
@@ -51,7 +53,11 @@ with DAG(
 
     transform_data = BashOperator(
         task_id="transform_data",
-        bash_command=f"dbt run --project-dir {DBT_PROJECT_DIR} --profiles-dir {DBT_PROFILES_DIR}"
+        bash_command="dbt run --project-dir {} --profiles-dir {} --vars '{}'".format(
+            DBT_PROJECT_DIR,
+            DBT_PROFILES_DIR,
+            "{start_date: '{{ params.start_date }}', end_date: '{{ params.end_date }}'}"
+        ) 
     )
 
     extract_data >> load_data 
