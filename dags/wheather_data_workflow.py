@@ -32,24 +32,24 @@ with DAG(
     }
 ) as dag:
 
-    # extract_data = PythonOperator( 
-    #     task_id="extract_data",
-    #     python_callable=extract_wheather_data,
-    #     op_kwargs={
-    #         "start_date": "{{ params.start_date }}",
-    #         "end_date": "{{ params.end_date }}"
-    #     }
-    # )
+    extract_data = PythonOperator( 
+        task_id="extract_data",
+        python_callable=extract_wheather_data,
+        op_kwargs={
+            "start_date": "{{ params.start_date }}",
+            "end_date": "{{ params.end_date }}"
+        }
+    )
 
-    # load_data = PythonOperator(
-    #     task_id="load_data",
-    #     python_callable=load_wheather_data,
-    #     op_kwargs={
-    #         "source_dataset": "src",
-    #         "source_wheather_table": "src_wheather",
-    #         "source_stations_table": "src_stations"
-    #     }
-    # )
+    load_data = PythonOperator(
+        task_id="load_data",
+        python_callable=load_wheather_data,
+        op_kwargs={
+            "source_dataset": "src",
+            "source_wheather_table": "src_wheather",
+            "source_stations_table": "src_stations"
+        }
+    )
 
     transform_data = BashOperator(
         task_id="transform_data",

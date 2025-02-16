@@ -1,3 +1,11 @@
+{{
+    config(
+        materialized = 'incremental',
+        unique_key = ['measurement_date', 'city_name'],
+        on_schema_change = 'fail'
+    )
+}}
+
 with src_wheather as (
     select *
     from {{ source("wheather_data", "wheather") }}
@@ -63,4 +71,13 @@ from
     left join dim_stations as dim on (
         station = dim.station_id
     )
+where true
+{% if is_incremental() %}
+    {% if var("start_date", false) and var("end_date", false) %}
+        and measurement_date >= '{{ var("start_date") }}'
+        and measurement_date <= '{{ var("end_date") }}'
+    {% else %}
+        and measurement_date > (select max(measurement_date) from {{ this }})
+    {% endif %}
+{% endif %}
 group by all
