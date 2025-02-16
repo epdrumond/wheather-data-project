@@ -53,7 +53,7 @@ with DAG(
 
     transform_data = BashOperator(
         task_id="transform_data",
-        bash_command="dbt run --project-dir {} --profiles-dir {} --vars '{}'".format(
+        bash_command="dbt build --project-dir {} --profiles-dir {} --vars '{}'".format(
             DBT_PROJECT_DIR,
             DBT_PROFILES_DIR,
             "{start_date: '{{ params.start_date }}', end_date: '{{ params.end_date }}'}"
