@@ -21,19 +21,7 @@ first_level_processing as (
         precip as precipitation,
         precipprob as precipitation_probability,
         precipcover as precipitation_coverage,
-        split(
-            regexp_replace(
-                replace(
-                    replace(
-                        preciptype, 
-                        '[', ''
-                    ), 
-                    ']', ''
-                ),
-                r'([\'\"])', ''
-            ),
-            ', '
-        ) as precipitation_types,
+        preciptype as precipitation_types,
         snow,
         snowdepth as snow_depth,
         windgust as wind_gust,
@@ -49,19 +37,7 @@ first_level_processing as (
         sunset as sunset_time,
         moonphase,
         split(conditions, ', ') as conditions,
-        split(
-            regexp_replace(
-                replace(
-                    replace(
-                        stations, 
-                        '[', ''
-                    ), 
-                    ']', ''
-                ),
-                r'([\'\"])', ''
-            ),
-            ', '
-        ) as stations,
+        stations,
         latitude,
         longitude,
         address as full_city_name,

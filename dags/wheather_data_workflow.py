@@ -49,10 +49,10 @@ with DAG(
         }
     )
 
-    # transform_data = BashOperator(
-    #     task_id="transform_data",
-    #     bash_command=f"dbt run --project-dir {DBT_PROJECT_DIR} --profiles-dir {DBT_PROFILES_DIR}"
-    # )
+    transform_data = BashOperator(
+        task_id="transform_data",
+        bash_command=f"dbt run --project-dir {DBT_PROJECT_DIR} --profiles-dir {DBT_PROFILES_DIR}"
+    )
 
-    # extract_data >> load_data 
-    # load_data >> transform_data
+    extract_data >> load_data 
+    load_data >> transform_data
