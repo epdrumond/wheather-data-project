@@ -34,7 +34,6 @@ def format_json_into_dataframe(data:dict) -> pd.DataFrame:
             else:
                 main_df[key] = val
 
-
     return main_df, stations_df
 
 
@@ -96,19 +95,18 @@ def extract_wheather_data(start_date: str, end_date: str, ti: str = None) -> Non
         )
 
         wheather, stations = format_json_into_dataframe(wheather_data)
-        stations["city"] = city_name
 
         wheather_df.append(wheather)
         stations_df.append(stations)
 
-    wheather_df = pd.concat(wheather_df)
-    stations_df = pd.concat(stations_df)
+    wheather_df = pd.concat(wheather_df, ignore_index=True)
+    stations_df = pd.concat(stations_df, ignore_index=True)
 
-    wheather_file_name = RAW_PATH + f"wheather_{start_date_str}_{end_date_str}.csv"
-    stations_file_name = RAW_PATH + f"stations_{start_date_str}_{end_date_str}.csv"
-    
-    wheather_df.to_csv(PATH + wheather_file_name)
-    stations_df.to_csv(PATH + stations_file_name)
+    wheather_file_name = RAW_PATH + f"wheather_{start_date_str}_{end_date_str}.json"
+    stations_file_name = RAW_PATH + f"stations_{start_date_str}_{end_date_str}.json"
+
+    wheather_df.to_json(PATH + wheather_file_name, orient="records", lines=True)
+    stations_df.to_json(PATH + stations_file_name, orient="records", lines=True)
 
     ti.xcom_push(key="wheather_file_name", value=wheather_file_name)
     ti.xcom_push(key="stations_file_name", value=stations_file_name)
@@ -166,7 +164,7 @@ def load_from_bucket(
     query = f"""
     load data overwrite {destination_dataset}.{destination_table}
     from files (
-        format = 'CSV',
+        format = 'JSON',
         uris = ['gs://{bucket_name}{source_blob_path}']
     );
     """
@@ -205,23 +203,24 @@ def load_wheather_data(
     )
 
     # Delete local files
-    os.remove(PATH + wheather_file_name)
-    os.remove(PATH + stations_file_name)
+    if os.path.exists(PATH + wheather_file_name) and os.path.exists(PATH + stations_file_name):
+        os.remove(PATH + wheather_file_name)
+        os.remove(PATH + stations_file_name)
 
     # Load data from GCP bucket files into tables
-    #Load wheather data
+    # Load wheather data
     load_from_bucket(
         bucket_name=BUCKET,
-        source_blob_path="/raw/wheather_*.csv",
+        source_blob_path="/raw/wheather_*.json",
         destination_dataset=source_dataset,
         destination_table=source_wheather_table,
         credentials_file=BIGQUERY_CREDENTIALS
     )
 
-    #Load stations data
+    # Load stations data
     load_from_bucket(
         bucket_name=BUCKET,
-        source_blob_path="/raw/stations_*.csv",
+        source_blob_path="/raw/stations_*.json",
         destination_dataset=source_dataset,
         destination_table=source_stations_table,
         credentials_file=BIGQUERY_CREDENTIALS

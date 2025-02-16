@@ -19,39 +19,40 @@ default_args = {
     "start_date": datetime(2024, 1, 1)
 }
 
-dag = DAG(
+with DAG(
     dag_id="wheather_dag",
     default_args=default_args,
     schedule_interval="0 0 * * 1",
-    catchup=False
-)
-
-extract_data = PythonOperator( 
-    task_id="extract_data",
-    python_callable=extract_wheather_data,
-    op_kwargs={
+    catchup=False,
+    params={
         "start_date": start_date_str,
         "end_date": end_date_str
-    },
-    dag=dag
-)
+    }
+) as dag:
 
-load_data = PythonOperator(
-    task_id="load_data",
-    python_callable=load_wheather_data,
-    op_kwargs={
-        "source_dataset": "src",
-        "source_wheather_table": "src_wheather",
-        "source_stations_table": "src_stations"
-    },
-    dag=dag
-)
+    extract_data = PythonOperator( 
+        task_id="extract_data",
+        python_callable=extract_wheather_data,
+        op_kwargs={
+            "start_date": "{{ params.start_date }}",
+            "end_date": "{{ params.end_date }}"
+        }
+    )
 
-transform_data = BashOperator(
-    task_id="transform_data",
-    bash_command=f"dbt run --project-dir {DBT_PROJECT_DIR} --profiles-dir {DBT_PROFILES_DIR}",
-    dag=dag
-)
+    load_data = PythonOperator(
+        task_id="load_data",
+        python_callable=load_wheather_data,
+        op_kwargs={
+            "source_dataset": "src",
+            "source_wheather_table": "src_wheather",
+            "source_stations_table": "src_stations"
+        }
+    )
 
-extract_data >> load_data 
-load_data >> transform_data
+    # transform_data = BashOperator(
+    #     task_id="transform_data",
+    #     bash_command=f"dbt run --project-dir {DBT_PROJECT_DIR} --profiles-dir {DBT_PROFILES_DIR}"
+    # )
+
+    # extract_data >> load_data 
+    # load_data >> transform_data
