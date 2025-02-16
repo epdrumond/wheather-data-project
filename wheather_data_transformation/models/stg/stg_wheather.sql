@@ -44,8 +44,14 @@ first_level_processing as (
         split(address)[0] as city_name,
         cast(tzoffset as int64) as timezone_offset
     from src_wheather
+    -- Handle files with overlapping data by selecting the last extraction
+    qualify row_number() over (
+        partition by datetime, address
+        order by extraction_date desc
+    ) = 1
 )
 
+-- Remove stations listed for which there is no correspondend in the stations table (eg. remote)
 select 
     flp.* except(stations),
     array_agg(

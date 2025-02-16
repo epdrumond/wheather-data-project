@@ -3,6 +3,7 @@ import sys
 import requests
 import pandas as pd
 import urllib.parse as parse
+from datetime import datetime
 
 from airflow.models import Variable
 
@@ -102,6 +103,9 @@ def extract_wheather_data(start_date: str, end_date: str, ti: str = None) -> Non
     wheather_df = pd.concat(wheather_df, ignore_index=True)
     stations_df = pd.concat(stations_df, ignore_index=True)
 
+    wheather_df["extraction_date"] = datetime.now()
+    stations_df["extraction_date"] = datetime.now()
+
     wheather_file_name = RAW_PATH + f"wheather_{start_date_str}_{end_date_str}.json"
     stations_file_name = RAW_PATH + f"stations_{start_date_str}_{end_date_str}.json"
 
@@ -177,6 +181,12 @@ def load_wheather_data(
         ti: str = None
 ) -> None:
     """
+    Load files storaged in GCP bucket into source wheather and stations tables.
+
+    Parameters:
+        source_dataset: Dataset of the destination table
+        source_wheather_table: Name of the destination wheather table
+        source_stations_table: Name of the destination stations table
     """
     # Fetch variables and data from previous tasks
     BUCKET = Variable.get("BUCKET")

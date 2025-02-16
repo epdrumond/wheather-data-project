@@ -76,7 +76,7 @@ models:
     description: Daily data on wheather measurements
     tests:
       - dbt_expectations.expect_table_row_count_to_equal_other_table:
-          compare_model: source("wheather_data", "wheather")
+          compare_model: ref("stg_wheather")
 
     columns:
       - name: fact_wheather_measurement_id		

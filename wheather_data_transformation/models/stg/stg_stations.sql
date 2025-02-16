@@ -11,3 +11,7 @@ select
   longitude,
   cast(datetime as timestamp) as snapshot_date
 from src_stations 
+qualify row_number() over (
+  partition by datetime, id
+  order by extraction_date desc
+) = 1
